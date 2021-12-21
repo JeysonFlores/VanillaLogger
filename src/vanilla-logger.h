@@ -14,7 +14,7 @@ enum LoggerLevel {
     WARNING
 };
 
-void LOG(VanillaLogger::LoggerLevel level, std::string information) {
+void LOG(VanillaLogger::LoggerLevel level, const std::string& message) {
     std::time_t t = std::time(nullptr);
     std::tm time = *std::localtime(&t);
     std::string code = "";
@@ -39,7 +39,7 @@ void LOG(VanillaLogger::LoggerLevel level, std::string information) {
             code = "\u001b[30;1mNO SPECIFIED\u001b[0m";
     }
 
-    std::cout << "\u001b[33;1m[" << std::put_time(&time, "%c %Z") << "]\u001b[0m - " << code << " " << information << std::endl;
+    std::cout << "\u001b[33;1m[" << std::put_time(&time, "%c %Z") << "]\u001b[0m - " << code << " - " << message << std::endl;
 }
 
 }
